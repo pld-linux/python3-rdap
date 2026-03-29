@@ -4,7 +4,7 @@
 Summary:	Registration Data Access Protocol tools
 Name:		python3-%{module}
 Version:	1.7.0
-Release:	1
+Release:	2
 License:	Apache v2.0
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/rdap/
@@ -51,12 +51,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %py3_install_pyproject
 
+%{__mv} $RPM_BUILD_ROOT%{_bindir}/{rdap,pyrdap}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
 %doc CHANGELOG.md LICENSE README.md
-%attr(755,root,root) %{_bindir}/rdap
+%attr(755,root,root) %{_bindir}/pyrdap
 %{py3_sitescriptdir}/rdap
 %{py3_sitescriptdir}/rdap-%{version}.dist-info
